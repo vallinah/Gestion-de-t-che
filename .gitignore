@@ -1,0 +1,29 @@
+# ========================
+# Laravel backend
+# ========================
+projet/backend/vendor/
+projet/backend/.env
+projet/backend/storage/*.log
+projet/backend/storage/framework/cache/
+projet/backend/storage/framework/sessions/
+projet/backend/storage/framework/views/
+projet/backend/bootstrap/cache/*
+
+# ========================
+# Frontend (Vite / Node)
+# ========================
+projet/frontend/node_modules/
+projet/frontend/dist/
+projet/frontend/.env
+projet/frontend/.env.*
+
+# ========================
+# OS / IDE
+# ========================
+.DS_Store
+*.log
+
+# ========================
+# Perso
+# ========================
+todo/
