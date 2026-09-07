@@ -1,0 +1,23 @@
+Backend
+    • PHP 8.3 
+    • Laravel 12
+    • Breeze API 
+    • Sanctum 
+    • Spatie Permission 
+    • Scramble 
+    • Pest 
+Frontend
+    • React 
+    • Vite 
+    • Tailwind CSS 
+    • React Router 
+    • Axios 
+    • React Hook Form 
+    • Zustand (si besoin) 
+Base de données
+    • MySQL 
+Déploiement
+    • Docker 
+    • Nginx 
+    • Ubuntu Server 
+    • GitHub Actions

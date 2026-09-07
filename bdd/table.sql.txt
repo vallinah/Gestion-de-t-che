@@ -1,0 +1,115 @@
+CREATE TABLE task(
+   id_task VARCHAR(50) ,
+   task VARCHAR(250)  NOT NULL,
+   starting_date DATETIME NOT NULL,
+   ending_date VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_task)
+);
+
+CREATE TABLE person(
+   id_person VARCHAR(50) ,
+   name VARCHAR(250) ,
+   first_name VARCHAR(250) ,
+   login VARCHAR(250)  NOT NULL,
+   password VARCHAR(250)  NOT NULL,
+   PRIMARY KEY(id_person),
+   UNIQUE(login)
+);
+
+CREATE TABLE task_status(
+   is_task_status VARCHAR(50) ,
+   task_status VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(is_task_status),
+   UNIQUE(task_status)
+);
+
+CREATE TABLE ingredient_type(
+   id_ingredient_type VARCHAR(50) ,
+   ingredient_type VARCHAR(250)  NOT NULL,
+   PRIMARY KEY(id_ingredient_type),
+   UNIQUE(ingredient_type)
+);
+
+CREATE TABLE quantity_type(
+   id_quantity_type VARCHAR(50) ,
+   quantity_type VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_quantity_type),
+   UNIQUE(quantity_type)
+);
+
+CREATE TABLE meal_type(
+   meal_type_id VARCHAR(50) ,
+   meal_type VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(meal_type_id),
+   UNIQUE(meal_type)
+);
+
+CREATE TABLE constraint_(
+   id_constraint VARCHAR(50) ,
+   constraint_ VARCHAR(50)  NOT NULL,
+   limit DECIMAL(15,2)   NOT NULL,
+   PRIMARY KEY(id_constraint)
+);
+
+CREATE TABLE expenditure_type(
+   expenditure_type_id VARCHAR(50) ,
+   expenditure_type VARCHAR(250)  NOT NULL,
+   PRIMARY KEY(expenditure_type_id)
+);
+
+CREATE TABLE meal(
+   id_meal VARCHAR(50) ,
+   meal_date DATE NOT NULL,
+   meal_type_id VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_meal),
+   FOREIGN KEY(meal_type_id) REFERENCES meal_type(meal_type_id)
+);
+
+CREATE TABLE ingredient(
+   id_ingredient VARCHAR(50) ,
+   ingredient VARCHAR(250)  NOT NULL,
+   id_ingredient_type VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_ingredient),
+   UNIQUE(ingredient),
+   FOREIGN KEY(id_ingredient_type) REFERENCES ingredient_type(id_ingredient_type)
+);
+
+CREATE TABLE expenditure(
+   id_expenditure VARCHAR(50) ,
+   expenditure DECIMAL(15,2)   NOT NULL,
+   context TEXT,
+   expenditure_date DATETIME NOT NULL,
+   expenditure_type_id VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_expenditure),
+   FOREIGN KEY(expenditure_type_id) REFERENCES expenditure_type(expenditure_type_id)
+);
+
+CREATE TABLE task_person_status(
+   id_task VARCHAR(50) ,
+   id_person VARCHAR(50) ,
+   is_task_status VARCHAR(50) ,
+   updating_date DATETIME,
+   PRIMARY KEY(id_task, id_person, is_task_status),
+   FOREIGN KEY(id_task) REFERENCES task(id_task),
+   FOREIGN KEY(id_person) REFERENCES person(id_person),
+   FOREIGN KEY(is_task_status) REFERENCES task_status(is_task_status)
+);
+
+CREATE TABLE meal_ingredient(
+   id_meal VARCHAR(50) ,
+   id_ingredient VARCHAR(50) ,
+   quantity DECIMAL(15,2)   NOT NULL,
+   PRIMARY KEY(id_meal, id_ingredient),
+   FOREIGN KEY(id_meal) REFERENCES meal(id_meal),
+   FOREIGN KEY(id_ingredient) REFERENCES ingredient(id_ingredient)
+);
+
+CREATE TABLE ingredient_quantity_type(
+   id_ingredient VARCHAR(50) ,
+   id_quantity_type VARCHAR(50) ,
+   price DECIMAL(15,2)  ,
+   updating_date DATETIME,
+   PRIMARY KEY(id_ingredient, id_quantity_type),
+   FOREIGN KEY(id_ingredient) REFERENCES ingredient(id_ingredient),
+   FOREIGN KEY(id_quantity_type) REFERENCES quantity_type(id_quantity_type)
+);

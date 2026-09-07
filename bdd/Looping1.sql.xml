@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Database>
+   <Name>Looping1</Name>
+   <Table>
+      <Name>task</Name>
+      <Column>
+         <Name>id_task</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>task</Name>
+         <Type>VARCHAR(250) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>starting_date</Name>
+         <Type>DATETIME</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>ending_date</Name>
+         <Type>VARCHAR(50) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>id_task</Key>
+      </PK>
+   </Table>
+   <Table>
+      <Name>person</Name>
+      <Column>
+         <Name>id_person</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>name</Name>
+         <Type>VARCHAR(250) </Type>
+      </Column>
+      <Column>
+         <Name>first_name</Name>
+         <Type>VARCHAR(250) </Type>
+      </Column>
+      <Column>
+         <Name>login</Name>
+         <Type>VARCHAR(250) </Type>
+         <Property>NOT NULL UNIQUE</Property>
+      </Column>
+      <Column>
+         <Name>password</Name>
+         <Type>VARCHAR(250) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>id_person</Key>
+      </PK>
+      <AK>
+         <Key>login</Key>
+      </AK>
+   </Table>
+   <Table>
+      <Name>task_status</Name>
+      <Column>
+         <Name>is_task_status</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>task_status</Name>
+         <Type>VARCHAR(50) </Type>
+         <Property>NOT NULL UNIQUE</Property>
+      </Column>
+      <PK>
+         <Key>is_task_status</Key>
+      </PK>
+      <AK>
+         <Key>task_status</Key>
+      </AK>
+   </Table>
+   <Table>
+      <Name>ingredient_type</Name>
+      <Column>
+         <Name>id_ingredient_type</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>ingredient_type</Name>
+         <Type>VARCHAR(250) </Type>
+         <Property>NOT NULL UNIQUE</Property>
+      </Column>
+      <PK>
+         <Key>id_ingredient_type</Key>
+      </PK>
+      <AK>
+         <Key>ingredient_type</Key>
+      </AK>
+   </Table>
+   <Table>
+      <Name>quantity_type</Name>
+      <Column>
+         <Name>id_quantity_type</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>quantity_type</Name>
+         <Type>VARCHAR(50) </Type>
+         <Property>NOT NULL UNIQUE</Property>
+      </Column>
+      <PK>
+         <Key>id_quantity_type</Key>
+      </PK>
+      <AK>
+         <Key>quantity_type</Key>
+      </AK>
+   </Table>
+   <Table>
+      <Name>meal_type</Name>
+      <Column>
+         <Name>meal_type_id</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>meal_type</Name>
+         <Type>VARCHAR(50) </Type>
+         <Property>NOT NULL UNIQUE</Property>
+      </Column>
+      <PK>
+         <Key>meal_type_id</Key>
+      </PK>
+      <AK>
+         <Key>meal_type</Key>
+      </AK>
+   </Table>
+   <Table>
+      <Name>constraint_</Name>
+      <Column>
+         <Name>id_constraint</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>constraint_</Name>
+         <Type>VARCHAR(50) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>limit</Name>
+         <Type>DECIMAL(15,2)  </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>id_constraint</Key>
+      </PK>
+   </Table>
+   <Table>
+      <Name>expenditure_type</Name>
+      <Column>
+         <Name>expenditure_type_id</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>expenditure_type</Name>
+         <Type>VARCHAR(250) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>expenditure_type_id</Key>
+      </PK>
+   </Table>
+   <Table>
+      <Name>meal</Name>
+      <Column>
+         <Name>id_meal</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>meal_date</Name>
+         <Type>DATE</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>meal_type_id</Name>
+         <Type>VARCHAR(50) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>id_meal</Key>
+      </PK>
+      <FK>
+         <Key>meal_type_id</Key>
+         <Reference>meal_type(meal_type_id)</Reference>
+      </FK>
+   </Table>
+   <Table>
+      <Name>ingredient</Name>
+      <Column>
+         <Name>id_ingredient</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>ingredient</Name>
+         <Type>VARCHAR(250) </Type>
+         <Property>NOT NULL UNIQUE</Property>
+      </Column>
+      <Column>
+         <Name>id_ingredient_type</Name>
+         <Type>VARCHAR(50) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>id_ingredient</Key>
+      </PK>
+      <AK>
+         <Key>ingredient</Key>
+      </AK>
+      <FK>
+         <Key>id_ingredient_type</Key>
+         <Reference>ingredient_type(id_ingredient_type)</Reference>
+      </FK>
+   </Table>
+   <Table>
+      <Name>expenditure</Name>
+      <Column>
+         <Name>id_expenditure</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>expenditure</Name>
+         <Type>DECIMAL(15,2)  </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>context</Name>
+         <Type>TEXT</Type>
+      </Column>
+      <Column>
+         <Name>expenditure_date</Name>
+         <Type>DATETIME</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>expenditure_type_id</Name>
+         <Type>VARCHAR(50) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>id_expenditure</Key>
+      </PK>
+      <FK>
+         <Key>expenditure_type_id</Key>
+         <Reference>expenditure_type(expenditure_type_id)</Reference>
+      </FK>
+   </Table>
+   <Table>
+      <Name>task_person_status</Name>
+      <Column>
+         <Name>id_task</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>id_person</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>is_task_status</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>updating_date</Name>
+         <Type>DATETIME</Type>
+      </Column>
+      <PK>
+         <Key>id_task, id_person, is_task_status</Key>
+      </PK>
+      <FK>
+         <Key>id_task</Key>
+         <Reference>task(id_task)</Reference>
+      </FK>
+      <FK>
+         <Key>id_person</Key>
+         <Reference>person(id_person)</Reference>
+      </FK>
+      <FK>
+         <Key>is_task_status</Key>
+         <Reference>task_status(is_task_status)</Reference>
+      </FK>
+   </Table>
+   <Table>
+      <Name>meal_ingredient</Name>
+      <Column>
+         <Name>id_meal</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>id_ingredient</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>quantity</Name>
+         <Type>DECIMAL(15,2)  </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>id_meal, id_ingredient</Key>
+      </PK>
+      <FK>
+         <Key>id_meal</Key>
+         <Reference>meal(id_meal)</Reference>
+      </FK>
+      <FK>
+         <Key>id_ingredient</Key>
+         <Reference>ingredient(id_ingredient)</Reference>
+      </FK>
+   </Table>
+   <Table>
+      <Name>ingredient_quantity_type</Name>
+      <Column>
+         <Name>id_ingredient</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>id_quantity_type</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>price</Name>
+         <Type>DECIMAL(15,2)  </Type>
+      </Column>
+      <Column>
+         <Name>updating_date</Name>
+         <Type>DATETIME</Type>
+      </Column>
+      <PK>
+         <Key>id_ingredient, id_quantity_type</Key>
+      </PK>
+      <FK>
+         <Key>id_ingredient</Key>
+         <Reference>ingredient(id_ingredient)</Reference>
+      </FK>
+      <FK>
+         <Key>id_quantity_type</Key>
+         <Reference>quantity_type(id_quantity_type)</Reference>
+      </FK>
+   </Table>
+</Database>
