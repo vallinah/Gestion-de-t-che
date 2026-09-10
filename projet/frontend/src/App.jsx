@@ -7,6 +7,8 @@ import Dashboard from './pages/Dashboard'
 import Tasks from './pages/Tasks'
 import Budget from './pages/Budget'
 import Meals from './pages/Meals'
+import Spaces from './pages/Spaces'
+import SpaceDetails from './pages/SpaceDetails'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
 import VerifyEmail from './pages/VerifyEmail'
@@ -33,6 +35,8 @@ export default function App() {
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/budget" element={<Budget />} />
             <Route path="/meals" element={<Meals />} />
+            <Route path="/spaces" element={<Spaces />} />
+            <Route path="/spaces/:id" element={<SpaceDetails />} />
           </Route>
         </Route>
       </Routes>
