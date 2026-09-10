@@ -3,10 +3,12 @@ import Sidebar from './Sidebar'
 
 export default function AppLayout() {
   return (
-    <div className="flex min-h-screen bg-slate-50">
+    <div className="flex h-screen overflow-hidden bg-slate-50">
+      {/* Sidebar fixe */}
       <Sidebar />
 
-      <main className="min-w-0 flex-1">
+      {/* Seul le contenu défile */}
+      <main className="min-w-0 flex-1 overflow-y-auto">
         <Outlet />
       </main>
     </div>
