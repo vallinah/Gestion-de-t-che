@@ -10,6 +10,7 @@ import Meals from './pages/Meals'
 import Spaces from './pages/Spaces'
 import SpaceDetails from './pages/SpaceDetails'
 import Settings from './pages/Settings'
+import Profile from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
 import VerifyEmail from './pages/VerifyEmail'
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="/spaces" element={<Spaces />} />
             <Route path="/spaces/:id" element={<SpaceDetails />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path='/profile' element={<Profile />} />
           </Route>
         </Route>
       </Routes>
